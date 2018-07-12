@@ -47,6 +47,7 @@ resource "azurerm_public_ip" "vm" {
     resource_group_name          = "${azurerm_resource_group.vm.name}"
     public_ip_address_allocation = "${var.public_ip_address_allocation}"
 	domain_name_label            = "${element(var.public_ip_dns, count.index)}"
+	
  
     tags                         = "${var.tags}"
 }
@@ -84,21 +85,12 @@ resource "azurerm_network_interface" "vm" {
         name                          = "ipconfig${count.index}"
         subnet_id                     = "${azurerm_subnet.myterraformsubnet.id}"
         private_ip_address_allocation = "dynamic"
-        public_ip_address_id          = "${length(azurerm_public_ip.vm.*.id
+        public_ip_address_id          = "${azurerm_public_ip.vm.id}"
     }
 
     
 }
 
-# Generate random text for a unique storage account name
-resource "random_id" "vm-sa" {
-    keepers = {
-        # Generate a new ID only when a new resource group is defined
-        vm_hostname = "${var.vm_hostname}"
-    }
-
-    byte_length = 6
-}
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "vm-sa" {
