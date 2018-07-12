@@ -65,8 +65,7 @@ variable "admin_username" {
 }
 variable "ssh_key" {
   description = "Path to the public key to be used for ssh access to the VM.  Only used with non-Windows vms and can be left as-is even if using Windows vms. If specifying a path to a certification on a Windows machine to provision a linux vm use the / in the path versus backslash. e.g. c:/home/id_rsa.pub"
-  default     = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChmErc3DyiJyQ1gP/xxv3ARY8y9g5a6z0gY/OkLt6noSBPjVjzf57h+1hsNcjVQR2me8/b8esvTXlAKuXcEcmd6BGKnt4k5AxjNTGkGJ+Vz99X0pDYk5FisAB0J/auLtL2RxgQ/J/p3iZx1ZWK2XoHrg+6OKeTlj8ZxX+L+oTPZyFsq/0WViwmU0IHNyJOP3sLwP/cy+96x3hLUp60xZwq6W6G1sxC4XFo3kke5jdtCgNr3yyL3l0cILx8AvZkqozPmb26fz44y5sTQ5GaSjki5iDjvrJJ/wFPlW/O20t+4H8FDz4WMKBFID3gSE1ZnzRoJELncS/XLcSnpcSkkGER
-"
+  default     = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChmErc3DyiJyQ1gP/xxv3ARY8y9g5a6z0gY/OkLt6noSBPjVjzf57h+1hsNcjVQR2me8/b8esvTXlAKuXcEcmd6BGKnt4k5AxjNTGkGJ+Vz99X0pDYk5FisAB0J/auLtL2RxgQ/J/p3iZx1ZWK2XoHrg+6OKeTlj8ZxX+L+oTPZyFsq/0WViwmU0IHNyJOP3sLwP/cy+96x3hLUp60xZwq6W6G1sxC4XFo3kke5jdtCgNr3yyL3l0cILx8AvZkqozPmb26fz44y5sTQ5GaSjki5iDjvrJJ/wFPlW/O20t+4H8FDz4WMKBFID3gSE1ZnzRoJELncS/XLcSnpcSkkGER"
 }
 variable "boot_diagnostics" {
   description = "(Optional) Enable or Disable boot diagnostics"
