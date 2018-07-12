@@ -1,9 +1,9 @@
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
-    subscription_id = "ff2ac935-150c-4854-8cb5-044cf21d224c"
-    client_id       = "68ee6abb-6614-45b8-b1a2-3c9291b4eba9"
-    client_secret   = "748cd0ae-21f4-485e-848d-9e0064f788a0"
+    subscription_id = "cf90006e-4f4d-47e4-acb6-f21b0dec29ad"
+    client_id       = "65720e53-8767-4987-be11-6e866a151dac"
+    client_secret   = "df4e1e5f-1cba-44f4-a506-82f9e1a11dee"
     tenant_id       = "105b2061-b669-4b31-92ac-24d304d195dc"
 }
 
@@ -46,7 +46,8 @@ resource "azurerm_public_ip" "vm" {
     location                     = "${var.location}"
     resource_group_name          = "${azurerm_resource_group.vm.name}"
     public_ip_address_allocation = "${var.public_ip_address_allocation}"
-	domain_name_label            = "${element(var.public_ip_dns, count.index)}"
+    domain_name_label             = "${var.public_ip_dns}"
+
 	
  
     tags                         = "${var.tags}"
