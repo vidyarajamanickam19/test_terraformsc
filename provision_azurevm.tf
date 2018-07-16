@@ -55,7 +55,7 @@ resource "azurerm_public_ip" "vm" {
 
 # Create Network Security Group and rule
 resource "azurerm_network_security_group" "vm" {
-    name                = "${var.vm_hostname}-${coalesce(var.remote_port,module.os.calculated_remote_port)}-nsg"
+    name                = "${var.vm_hostname}-nsg"
     location            = "${azurerm_resource_group.vm.location}"
     resource_group_name = "${azurerm_resource_group.vm.name}"
 
