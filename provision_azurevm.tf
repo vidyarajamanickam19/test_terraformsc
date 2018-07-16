@@ -23,8 +23,8 @@ resource "random_id" "vm-sa" {
 }
 
 # Create virtual network
-resource "azurerm_virtual_network" "myterraformnetwork" {
-    name                = "vmss-vnet"
+resource "azurerm_virtual_network" "vm" {
+    name                = "${var.vm_hostname}"
     address_space       = ["10.0.0.0/16"]
     location            = "${var.location}"
     resource_group_name = "${azurerm_resource_group.vm.name}"
@@ -33,10 +33,10 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 }
 
 # Create subnet
-resource "azurerm_subnet" "myterraformsubnet" {
-    name                 = "mySubnet"
+resource "azurerm_subnet" "vm" {
+    name                 = "terrasubnet"
     resource_group_name  = "${azurerm_resource_group.vm.name}"
-    virtual_network_name = "${azurerm_virtual_network.myterraformnetwork.name}"
+    virtual_network_name = "${azurerm_virtual_network.vm.name}"
     address_prefix       = "10.0.1.0/24"
 }
 
@@ -95,7 +95,7 @@ resource "azurerm_network_interface" "vm" {
 
     ip_configuration {
         name                          = "ipconfig${count.index}"
-        subnet_id                     = "${azurerm_subnet.myterraformsubnet.id}"
+        subnet_id                     = "${azurerm_subnet.vm.id}"
         private_ip_address_allocation = "dynamic"
         public_ip_address_id          = "${azurerm_public_ip.vm.id}"
     }
