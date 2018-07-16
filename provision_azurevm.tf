@@ -71,7 +71,7 @@ resource "azurerm_network_security_group" "vm" {
         destination_address_prefix = "*"
     }
 	 security_rule {
-        name                       = "SSH"
+        name                       = "http"
         priority                   = 1002
         direction                  = "Inbound"
         access                     = "Allow"
